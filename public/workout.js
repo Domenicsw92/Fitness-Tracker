@@ -21,6 +21,7 @@ async function initWorkout() {
 
 function tallyExercises(exercises) {
   const tallied = exercises.reduce((acc, curr) => {
+    acc.totalDuration = (acc.totalDuration || 0) + curr.totalDuration
     if (curr.type === "resistance") {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
       acc.totalSets = (acc.totalSets || 0) + curr.sets;
@@ -45,6 +46,7 @@ function formatDate(date) {
 }
 
 function renderWorkoutSummary(summary) {
+  console.log(summary)
   const container = document.querySelector(".workout-stats");
 
   const workoutKeyMap = {
